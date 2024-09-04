@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slot Machine Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Random Coupon</title>
+    <link rel="stylesheet" href="c_random.css">
+    <script src="c_random.js" defer></script>
 </head>
 <body>
-    <div id="slot-machine-container">
-        <h1>Slot Machine Game</h1>
-        <div id="slots">
-            <div class="slot">🍒</div>
-            <div class="slot">🍋</div>
-            <div class="slot">🍉</div>
+    <div id="random-coupon-container">
+        <h1>Random Coupon</h1>
+        <div class="random_Coupon">
+            <p>랜덤 숫자가 슬롯머신처럼 아래로 랜덤 숫자로 1초 마다 멈춤 반복:</p>
+            <div id="slots">
+                <span class="slot">0</span>
+                <span class="slot">0</span>
+            </div>
+            <a href="#" id="get-coupon"><span class="coupon-number">쿠폰 받기</span></a>
         </div>
-        <button id="spin-button">Spin</button>
         <p id="result"></p>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
