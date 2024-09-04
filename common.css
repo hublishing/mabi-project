@@ -29,6 +29,9 @@ p {
     background-color: #E6E7EA;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed; /* 화면 상단에 고정 */
+    width: 100%;
+    z-index: 1000; /* 다른 요소 위에 오도록 설정 */
 }
 
 .logo {
@@ -86,8 +89,11 @@ p {
     background-color: #F4F4F5;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    height: 100%;
+    position: fixed; /* 사이드바도 고정 */
+    top: 60px; /* 헤더 높이만큼 아래로 */
+    bottom: 0;
+    height: calc(100% - 60px); /* 헤더 공간 제외한 전체 높이 */
+    overflow-y: auto;
 }
 
 .sidebar ul {
@@ -116,8 +122,8 @@ p {
 
 /* 메인 컨텐츠 스타일 */
 .main-content {
-    margin-left: 260px;
-    padding: 20px;
+    margin-left: 260px; /* 사이드바의 넓이만큼 여백 */
+    padding: 80px 20px 20px; /* 헤더와의 간격 확보 */
     background-color: #F9FAFB;
     min-height: 100vh;
 }
@@ -144,7 +150,7 @@ p {
 
     .main-content {
         margin-left: 0;
-        padding: 10px;
+        padding: 70px 10px 10px;
     }
 
     .header {
