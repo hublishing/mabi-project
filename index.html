@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <!-- Material Design Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Google Fonts & Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="c_random.css">
@@ -15,7 +16,7 @@
     <header class="header">
         <div class="logo">
             <span class="material-icons">menu</span>
-            <h1>Crystal SaaS Platform</h1>
+            <span>Crystal SaaS Platform</span>
         </div>
         <div class="search">
             <input type="text" placeholder="Search here">
@@ -34,7 +35,7 @@
     <!-- 사이드바 -->
     <aside class="sidebar">
         <ul>
-            <li class="active">Dashboard</li>
+            <li class="active"><span class="material-icons">dashboard</span> Dashboard</li>
             <li>Sales
                 <ul>
                     <li>Menu Item</li>
@@ -76,13 +77,12 @@
         </section>
     </main>
 
-    <!-- Material Design JavaScript -->
-    <script src="https://unpkg.com/@material/web@latest/dist/mdc.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="firebase.js"></script>
     <script src="common.js"></script>
 </body>
 </html>
+
 
 
 
