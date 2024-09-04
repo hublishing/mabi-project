@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Settings - Dashboard</title>
     <!-- Google Fonts & Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="c_random.css">
 </head>
 <body>
     <!-- 헤더 -->
@@ -18,61 +17,86 @@
             <span class="material-icons">menu</span>
             <span>Crystal SaaS Platform</span>
         </div>
-        <div class="search">
-            <input type="text" placeholder="Search here">
-            <span class="material-icons">search</span>
+        <div class="profile">
+            <span class="material-icons">account_circle</span>
+            <div class="profile-info">
+                <span>Profile Name</span>
+                <span>Assigned Role</span>
+            </div>
         </div>
         <nav class="nav">
-            <a href="#">Invoice</a>
-            <a href="#">Add</a>
-            <a href="#">Accounts</a>
             <span class="material-icons">settings</span>
             <span class="material-icons">notifications</span>
-            <span class="material-icons">account_circle</span>
+            <span class="material-icons">help_outline</span>
+            <button class="refer-button">Refer & Earn</button>
         </nav>
     </header>
 
     <!-- 사이드바 -->
     <aside class="sidebar">
+        <div class="search">
+            <input type="text" placeholder="Search here">
+            <span class="material-icons">search</span>
+        </div>
         <ul>
+            <li>Purchase</li>
             <li class="active"><span class="material-icons">dashboard</span> Dashboard</li>
-            <li>Sales
-                <ul>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
-                </ul>
-            </li>
-            <li>Purchase
-                <ul>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
-                </ul>
-            </li>
-            <li>Items
-                <ul>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
-                </ul>
-            </li>
-            <li>Others
-                <ul>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
-                </ul>
-            </li>
+            <li>Sales</li>
+            <li>Purchase</li>
+            <li>Items</li>
+            <li>Accounts</li>
+            <li>Reports</li>
+            <li>Settings</li>
+            <li>Log out</li>
         </ul>
     </aside>
 
     <!-- 메인 컨텐츠 -->
     <main class="main-content">
-        <section class="dashboard">
-            <h2>Dashboard</h2>
+        <section class="settings">
+            <h2>Settings</h2>
             <p>Pretend not to be evil meow to be let out intently stare at the same.</p>
-            <div class="content-grid">
-                <div class="card">Content Block 1</div>
-                <div class="card">Content Block 2</div>
-                <div class="card">Content Block 3</div>
-                <div class="card">Content Block 4</div>
+            <div class="settings-nav">
+                <ul>
+                    <li class="active">Business Profile</li>
+                    <li>User</li>
+                    <li>Preferences</li>
+                    <li>e-Way</li>
+                    <li>Templates</li>
+                    <li>Notifications</li>
+                    <li>Reminders</li>
+                    <li>Data Backup</li>
+                    <li>Subscription</li>
+                    <li>Add ons</li>
+                </ul>
+            </div>
+            <div class="settings-content">
+                <h3>Business Profile</h3>
+                <p>Pretend not to be evil meow to be let out intently stare at the same.</p>
+                <form>
+                    <label for="business-name">Business Name</label>
+                    <input type="text" id="business-name" placeholder="Ex. ABC Pvt. Ltd.">
+                    
+                    <label for="business-logo">Business Logo</label>
+                    <div class="logo-upload">
+                        <div class="logo-placeholder"></div>
+                        <button>Change</button>
+                        <button>Remove</button>
+                    </div>
+
+                    <label for="contact-number">Primary Contact No.</label>
+                    <input type="text" id="contact-number" placeholder="+91 | Ex. 99999 99999">
+
+                    <label for="fiscal-year">Fiscal Year</label>
+                    <select id="fiscal-year">
+                        <option>Select Option</option>
+                    </select>
+
+                    <label for="industry">Industry</label>
+                    <select id="industry">
+                        <option>Select Option</option>
+                    </select>
+                </form>
             </div>
         </section>
     </main>
@@ -82,6 +106,7 @@
     <script src="common.js"></script>
 </body>
 </html>
+
 
 
 

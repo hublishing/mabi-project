@@ -6,19 +6,15 @@ body {
     color: #232A33;
 }
 
-h1, h2 {
+h1, h2, h3 {
     margin: 0;
     padding: 0;
     font-weight: 700;
 }
 
-h2 {
-    font-size: 24px;
-    color: #06080F;
-}
-
 p {
     color: #4F565F;
+    margin: 0 0 20px;
 }
 
 /* 헤더 스타일 */
@@ -29,9 +25,9 @@ p {
     background-color: #E6E7EA;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed; /* 화면 상단에 고정 */
+    position: fixed;
     width: 100%;
-    z-index: 1000; /* 다른 요소 위에 오도록 설정 */
+    z-index: 1000;
 }
 
 .logo {
@@ -44,37 +40,20 @@ p {
     font-size: 24px;
 }
 
-.search {
+.profile {
     display: flex;
     align-items: center;
-    background-color: #F4F4F5;
-    border-radius: 4px;
-    padding: 5px;
 }
 
-.search input {
-    border: none;
-    background: none;
-    padding: 5px;
-    font-size: 14px;
-    color: #232A33;
-}
-
-.search .material-icons {
-    color: #232A33;
-    font-size: 20px;
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
 }
 
 .nav {
     display: flex;
     align-items: center;
-}
-
-.nav a {
-    margin-right: 20px;
-    color: #232A33;
-    text-decoration: none;
-    font-weight: 600;
 }
 
 .nav .material-icons {
@@ -83,17 +62,49 @@ p {
     font-size: 24px;
 }
 
+.refer-button {
+    margin-left: 20px;
+    padding: 5px 15px;
+    background-color: #4F565F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 /* 사이드바 스타일 */
 .sidebar {
     width: 240px;
     background-color: #F4F4F5;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    position: fixed; /* 사이드바도 고정 */
-    top: 60px; /* 헤더 높이만큼 아래로 */
+    position: fixed;
+    top: 60px;
     bottom: 0;
-    height: calc(100% - 60px); /* 헤더 공간 제외한 전체 높이 */
+    height: calc(100% - 60px);
     overflow-y: auto;
+}
+
+.sidebar .search {
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.sidebar .search input {
+    border: none;
+    background: none;
+    padding: 5px;
+    font-size: 14px;
+    color: #232A33;
+}
+
+.sidebar .search .material-icons {
+    color: #232A33;
+    font-size: 20px;
 }
 
 .sidebar ul {
@@ -122,47 +133,73 @@ p {
 
 /* 메인 컨텐츠 스타일 */
 .main-content {
-    margin-left: 260px; /* 사이드바의 넓이만큼 여백 */
-    padding: 80px 20px 20px; /* 헤더와의 간격 확보 */
+    margin-left: 260px;
+    padding: 80px 20px 20px;
     background-color: #F9FAFB;
     min-height: 100vh;
 }
 
-.content-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+.settings {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.card {
+.settings-nav {
+    margin-bottom: 20px;
+}
+
+.settings-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.settings-nav li {
+    margin-right: 20px;
+    color: #232A33;
+    cursor: pointer;
+}
+
+.settings-nav li.active {
+    font-weight: 700;
+    color: #06080F;
+}
+
+.settings-content {
     background-color: #E6E7EA;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    color: #232A33;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
+form {
+    display: flex;
+    flex-direction: column;
+}
 
-    .main-content {
-        margin-left: 0;
-        padding: 70px 10px 10px;
-    }
+form label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
 
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+form input, form select {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #D3D3D3;
+    border-radius: 4px;
+}
 
-    .nav {
-        flex-wrap: wrap;
-    }
+.logo-upload {
+    display: flex;
+    align-items: center;
+}
 
-    .content-grid {
-        grid-template-columns: 1fr; /* 작은 화면에서는 한 열로 */
-    }
+.logo-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: #D3D3D3;
+    border-radius: 8px;
+    margin-right: 10px;
 }
