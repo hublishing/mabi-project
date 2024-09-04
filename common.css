@@ -1,11 +1,9 @@
 /* 기본 스타일 */
 
 :root {
-    --sidebar-width: 240px; /* 사이드바의 폭을 변수로 정의 */
-    --
+    --sidebar-width: 200px;
+    --sidebar-padding: 20px;
 }
-
-
 
 body {
     margin: 0;
@@ -26,17 +24,12 @@ p {
 }
 
 /* 헤더 스타일 */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #E6E7EA;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.sidebar {
+    background-color: #F4F4F5;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
-    width: 100%;
-    z-index: 1000;
-    margin-left: var(--sidebar-width);
+    height: 100%;
+    overflow-y: auto; 
 }
 
 .logo {
