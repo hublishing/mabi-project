@@ -3,34 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firebase Web App with Material Design</title>
+    <title>Dashboard</title>
     <!-- Material Design CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/@material/web@latest/dist/mdc.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="c_random.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Firebase Web Application</h1>
-        <form id="dataForm" class="mdc-form-field">
-            <label class="mdc-text-field mdc-text-field--filled">
-                <input type="text" id="dataInput" class="mdc-text-field__input" placeholder="Enter some data">
-                <span class="mdc-line-ripple"></span>
-            </label>
-            <button type="submit" class="mdc-button mdc-button--raised">Save to Firebase</button>
-        </form>
-        <div id="output"></div>
+    <!-- 헤더 -->
+    <header class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <button class="material-icons mdc-top-app-bar__navigation-icon">menu</button>
+                <span class="mdc-top-app-bar__title">Dashboard</span>
+            </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                <button class="material-icons mdc-icon-button">search</button>
+                <button class="material-icons mdc-icon-button">notifications</button>
+                <button class="material-icons mdc-icon-button">account_circle</button>
+            </section>
+        </div>
+    </header>
+
+    <!-- 사이드바와 메인 컨텐츠 -->
+    <div class="mdc-drawer-app-content">
+        <!-- 사이드바 -->
+        <aside class="mdc-drawer mdc-drawer--dismissible">
+            <div class="mdc-drawer__content">
+                <nav class="mdc-list">
+                    <a class="mdc-list-item mdc-list-item--activated" href="#">
+                        <span class="mdc-list-item__text">Dashboard</span>
+                    </a>
+                    <div class="mdc-list-group">
+                        <h3 class="mdc-list-group__subheader">Sales</h3>
+                        <a class="mdc-list-item" href="#">
+                            <span class="mdc-list-item__text">Menu Item</span>
+                        </a>
+                        <a class="mdc-list-item" href="#">
+                            <span class="mdc-list-item__text">Menu Item</span>
+                        </a>
+                    </div>
+                    <div class="mdc-list-group">
+                        <h3 class="mdc-list-group__subheader">Purchase</h3>
+                        <a class="mdc-list-item" href="#">
+                            <span class="mdc-list-item__text">Menu Item</span>
+                        </a>
+                        <a class="mdc-list-item" href="#">
+                            <span class="mdc-list-item__text">Menu Item</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- 메인 컨텐츠 -->
+        <main class="main-content">
+            <div class="mdc-top-app-bar--fixed-adjust">
+                <!-- 대시보드 카드 -->
+                <section class="content-grid">
+                    <div class="mdc-card">Content Block 1</div>
+                    <div class="mdc-card">Content Block 2</div>
+                    <div class="mdc-card">Content Block 3</div>
+                    <div class="mdc-card">Content Block 4</div>
+                </section>
+            </div>
+        </main>
     </div>
 
     <!-- Material Design JavaScript -->
     <script src="https://unpkg.com/@material/web@latest/dist/mdc.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js"></script>
+    <!-- Custom JavaScript -->
     <script src="firebase.js"></script>
     <script src="common.js"></script>
 </body>
 </html>
+
 
 
 <!--

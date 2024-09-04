@@ -1,33 +1,115 @@
+/* 기본 스타일 */
 body {
-    font-family: Roboto, Arial, sans-serif;
-    background-color: #f0f0f0;
     margin: 0;
-    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--color-body);
+    background-color: var(--color-bg-1);
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
+h1, h2, h3 {
+    margin: 0;
+}
+
+/* 헤더 스타일 */
+.mdc-top-app-bar {
+    background-color: var(--color-bg-2);
+    color: var(--color-title);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mdc-top-app-bar__navigation-icon,
+.mdc-icon-button {
+    color: var(--color-title);
+}
+
+/* 사이드바 스타일 */
+.mdc-drawer {
+    width: 240px;
+    background-color: var(--color-bg-1);
+    color: var(--color-body);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.mdc-drawer__content {
+    padding-top: 64px; /* 헤더 높이에 맞춤 */
+}
+
+.mdc-list-item {
+    color: var(--color-body);
+}
+
+.mdc-list-item--activated {
+    background-color: var(--color-bg-2);
+    color: var(--color-title);
+}
+
+/* 메인 컨텐츠 스타일 */
+.main-content {
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    text-align: center;
+    background-color: var(--color-bg-1);
+    flex-grow: 1;
 }
 
+.mdc-top-app-bar--fixed-adjust {
+    padding-top: 64px; /* 헤더 높이에 맞춤 */
+}
+
+/* 카드 스타일 */
+.mdc-card {
+    background-color: var(--color-bg-2);
+    padding: 16px;
+    margin: 16px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Large radius */
+    color: var(--color-body);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .mdc-drawer {
+        display: none; /* 작은 화면에서는 사이드바 숨김 */
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr; /* 작은 화면에서는 한 열로 */
+    }
+}
+
+/* 텍스트 스타일 */
 h1 {
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 700;
+    color: var(--color-title);
 }
 
-.mdc-form-field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h2 {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+    color: var(--color-title);
 }
 
-#output {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
+p, .body-text {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--color-body);
+}
+
+.caption {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+    color: var(--color-caption);
 }
