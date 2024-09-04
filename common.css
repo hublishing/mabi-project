@@ -1,4 +1,12 @@
 /* 기본 스타일 */
+
+:root {
+    --sidebar-width: 240px; /* 사이드바의 폭을 변수로 정의 */
+    --
+}
+
+
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -28,6 +36,7 @@ p {
     position: fixed;
     width: 100%;
     z-index: 1000;
+    margin-left: var(--sidebar-width);
 }
 
 .logo {
@@ -79,9 +88,8 @@ p {
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
-    top: 60px;
     bottom: 0;
-    height: calc(100% - 60px);
+    height: 100%;
     overflow-y: auto;
 }
 
