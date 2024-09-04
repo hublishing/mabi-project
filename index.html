@@ -4,73 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <!-- Material Design CSS -->
+    <!-- Material Design Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/@material/web@latest/dist/mdc.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="c_random.css">
 </head>
 <body>
     <!-- 헤더 -->
-    <header class="mdc-top-app-bar">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <button class="material-icons mdc-top-app-bar__navigation-icon">menu</button>
-                <span class="mdc-top-app-bar__title">Dashboard</span>
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                <button class="material-icons mdc-icon-button">search</button>
-                <button class="material-icons mdc-icon-button">notifications</button>
-                <button class="material-icons mdc-icon-button">account_circle</button>
-            </section>
+    <header class="header">
+        <div class="logo">
+            <span class="material-icons">menu</span>
+            <h1>Crystal SaaS Platform</h1>
         </div>
+        <div class="search">
+            <input type="text" placeholder="Search here">
+            <span class="material-icons">search</span>
+        </div>
+        <nav class="nav">
+            <a href="#">Invoice</a>
+            <a href="#">Add</a>
+            <a href="#">Accounts</a>
+            <span class="material-icons">settings</span>
+            <span class="material-icons">notifications</span>
+            <span class="material-icons">account_circle</span>
+        </nav>
     </header>
 
-    <!-- 사이드바와 메인 컨텐츠 -->
-    <div class="mdc-drawer-app-content">
-        <!-- 사이드바 -->
-        <aside class="mdc-drawer mdc-drawer--dismissible">
-            <div class="mdc-drawer__content">
-                <nav class="mdc-list">
-                    <a class="mdc-list-item mdc-list-item--activated" href="#">
-                        <span class="mdc-list-item__text">Dashboard</span>
-                    </a>
-                    <div class="mdc-list-group">
-                        <h3 class="mdc-list-group__subheader">Sales</h3>
-                        <a class="mdc-list-item" href="#">
-                            <span class="mdc-list-item__text">Menu Item</span>
-                        </a>
-                        <a class="mdc-list-item" href="#">
-                            <span class="mdc-list-item__text">Menu Item</span>
-                        </a>
-                    </div>
-                    <div class="mdc-list-group">
-                        <h3 class="mdc-list-group__subheader">Purchase</h3>
-                        <a class="mdc-list-item" href="#">
-                            <span class="mdc-list-item__text">Menu Item</span>
-                        </a>
-                        <a class="mdc-list-item" href="#">
-                            <span class="mdc-list-item__text">Menu Item</span>
-                        </a>
-                    </div>
-                </nav>
-            </div>
-        </aside>
+    <!-- 사이드바 -->
+    <aside class="sidebar">
+        <ul>
+            <li class="active">Dashboard</li>
+            <li>Sales
+                <ul>
+                    <li>Menu Item</li>
+                    <li>Menu Item</li>
+                </ul>
+            </li>
+            <li>Purchase
+                <ul>
+                    <li>Menu Item</li>
+                    <li>Menu Item</li>
+                </ul>
+            </li>
+            <li>Items
+                <ul>
+                    <li>Menu Item</li>
+                    <li>Menu Item</li>
+                </ul>
+            </li>
+            <li>Others
+                <ul>
+                    <li>Menu Item</li>
+                    <li>Menu Item</li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
 
-        <!-- 메인 컨텐츠 -->
-        <main class="main-content">
-            <div class="mdc-top-app-bar--fixed-adjust">
-                <!-- 대시보드 카드 -->
-                <section class="content-grid">
-                    <div class="mdc-card">Content Block 1</div>
-                    <div class="mdc-card">Content Block 2</div>
-                    <div class="mdc-card">Content Block 3</div>
-                    <div class="mdc-card">Content Block 4</div>
-                </section>
+    <!-- 메인 컨텐츠 -->
+    <main class="main-content">
+        <section class="dashboard">
+            <h2>Dashboard</h2>
+            <p>Pretend not to be evil meow to be let out intently stare at the same.</p>
+            <div class="content-grid">
+                <div class="card">Content Block 1</div>
+                <div class="card">Content Block 2</div>
+                <div class="card">Content Block 3</div>
+                <div class="card">Content Block 4</div>
             </div>
-        </main>
-    </div>
+        </section>
+    </main>
 
     <!-- Material Design JavaScript -->
     <script src="https://unpkg.com/@material/web@latest/dist/mdc.min.js"></script>
@@ -79,6 +83,7 @@
     <script src="common.js"></script>
 </body>
 </html>
+
 
 
 
