@@ -1,7 +1,7 @@
 /* 기본 스타일 */
 
 :root {
-    --sidebar-width: 200px;
+    --sidebar-width: 210px;
     --sidebar-padding: 20px;
 }
 
@@ -24,12 +24,21 @@ p {
 }
 
 /* 헤더 스타일 */
+.header {
+    margin-left: 250px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    background: #F7FAFC;
+}
+
 .sidebar {
-    background-color: #F4F4F5;
+    background-color: #EDF2F7;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     height: 100%;
     overflow-y: auto; 
+    top: 0;
 }
 
 .logo {
@@ -48,8 +57,7 @@ p {
 }
 
 .profile-info {
-    display: flex;
-    flex-direction: column;
+    display: flex; 
     margin-left: 10px;
 }
 
@@ -76,12 +84,11 @@ p {
 
 /* 사이드바 스타일 */
 .sidebar {
-    width: 240px;
+    width: var(--sidebar-width);
     background-color: #F4F4F5;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    bottom: 0;
+    position: fixed; 
     height: 100%;
     overflow-y: auto;
 }
@@ -134,15 +141,14 @@ p {
 
 /* 메인 컨텐츠 스타일 */
 .main-content {
-    margin-left: 260px;
-    padding: 80px 20px 20px;
-    background-color: #F9FAFB;
+    margin-left: 250px;
+    padding: 30px;
+    background-color: #fff;
     min-height: 100vh;
 }
 
 .settings {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px; 
 }
 
 .settings-nav {
