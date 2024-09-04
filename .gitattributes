@@ -1,0 +1,24 @@
+# 모든 텍스트 파일에 대해 자동으로 줄바꿈 문자 변환 적용
+* text=auto
+
+# Windows 환경에서의 CRLF -> LF 변환 방지 (예: 바이너리 파일)
+*.png binary
+*.jpg binary
+*.gif binary
+*.exe binary
+*.dll binary
+
+# JavaScript, CSS, HTML 파일을 텍스트 파일로 처리
+*.js text
+*.css text
+*.html text
+
+# JSON, Markdown 파일도 텍스트 파일로 처리
+*.json text
+*.md text
+
+# Shell script 파일을 LF로 고정
+*.sh text eol=lf
+
+# 파워셸 스크립트를 CRLF로 고정
+*.ps1 text eol=crlf
