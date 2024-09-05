@@ -14,43 +14,106 @@
     
     <!-- 헤더 -->
     <header class="header">
-        <div class="logo">
-            <span class="material-icons">menu</span>
-            <span>Crystal SaaS Platform</span>
-        </div>
-        <div class="profile">
-            <span class="material-icons">account_circle</span>
-            <div class="profile-info">
-                <span>Profile Name</span>
-                <span>Assigned Role</span>
+        <div class="header-wrap">
+            <div class="pagetitle"> 
+                <span>{page title}</span>
             </div>
+            <div class="profile">
+                <span class="material-icons">account_circle</span>
+                <div class="profile-info">
+                    <!-- 로그인 상태 -->
+                    <div id="loggedInContent" style="display: none;">
+                        <p>환영합니다, <span id="userEmail"></span>님!</p>
+                        <button id="logoutButton">로그아웃</button>
+                    </div>
+
+                    <!-- 로그아웃 상태 -->
+                    <div id="loggedOutContent" style="display: none;">
+                        <p>로그인이 필요합니다.</p>
+                        <button onclick="showLoginForm()">로그인</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 회원가입 폼 -->
+            <form id="signupForm">
+                <input type="email" id="signupEmail" placeholder="이메일" required>
+                <input type="password" id="signupPassword" placeholder="비밀번호" required>
+                <button type="submit">회원가입</button>
+            </form> 
+
+            <!-- 로그인 폼 -->
+            <form id="loginForm">
+                <h2>로그인</h2>
+                <input type="email" id="loginEmail" placeholder="이메일">
+                <input type="password" id="loginPassword" placeholder="비밀번호">
+                <button type="submit">로그인</button>
+            </form>
+
         </div>
-        <nav class="nav">
-            <span class="material-icons">settings</span>
-            <span class="material-icons">notifications</span>
-            <span class="material-icons">help_outline</span>
-            <button class="refer-button">Refer & Earn</button>
-        </nav>
     </header>
     
     <!-- 사이드바 -->
     <aside class="sidebar">
-        <div class=""><span class="material-icons">dashboard</span> Dashboard</div> 
-        <ul>
-            <li>Purchase</li>
-            <li>Sales</li>
-            <li>Purchase</li>
-            <li>Items</li>
-            <li>Accounts</li>
-            <li>Reports</li>
-            <li>Settings</li>
-            <li>Log out</li>
-        </ul>
+        <div class="logo"><span class="material-icons">dashboard</span> Dashboard</div> 
+        <div>
+            <div>Purchase</div>
+            <ul>
+                <li>Purchase</li>
+                <li>Sales</li>
+                <li>Purchase</li>
+                <li>Items</li>
+                <li>Accounts</li>
+                <li>Reports</li>
+                <li>Settings</li>
+                <li>Log out</li>
+            </ul> 
+        </div>
     </aside> 
 
     <!-- 메인 컨텐츠 -->
     <main class="main-content">
         
+        <form id="widgetForm">
+            <!-- InquiryTimeFrom (검색 시작 일자) -->
+            <label for="inquiryTimeFrom">쿠폰 조회 시작 일자:</label>
+            <input type="datetime-local" id="inquiryTimeFrom" name="inquiryTimeFrom">
+            
+            <!-- InquiryTimeTo (검색 종료 일자) -->
+            <label for="inquiryTimeTo">쿠폰 조회 종료 일자:</label>
+            <input type="datetime-local" id="inquiryTimeTo" name="inquiryTimeTo">
+            
+            <!-- InquiryType (검색 타입) -->
+            <label for="inquiryType">검색 타입:</label>
+            <select id="inquiryType" name="inquiryType">
+                <option value="reg">생성일</option>
+                <option value="mod">수정일</option>
+            </select>
+            
+            <!-- Issue Type (쿠폰 발급 타입) -->
+            <label for="issueType">쿠폰 발급 타입:</label>
+            <select id="issueType" name="issueType">
+                <option value="DOWN">다운로드</option>
+                <option value="MANUAL">수동 발급</option>
+                <option value="AUTO">자동 발급</option>
+            </select>
+            
+            <!-- Purpose (쿠폰 생성 업체) -->
+            <label for="purpose">쿠폰 생성 업체:</label>
+            <select id="purpose" name="purpose">
+                <option value="N_C">나인큐브</option>
+            </select>
+            
+            <!-- Limit (조회할 쿠폰 수) -->
+            <label for="limit">조회할 쿠폰 수 (최대 50):</label>
+            <input type="number" id="limit" name="limit" max="50" min="1" value="50">
+            
+            <!-- Fields (조회할 필드) -->
+            <label for="fields">조회할 필드:</label>
+            <input type="text" id="fields" name="fields" value="uid,cate1,product_name">
+        
+            <button type="submit">위젯 생성</button>
+        </form>
+
         <section class="settings">
             <h2>Settings</h2>
             <p>Pretend not to be evil meow to be let out intently stare at the same.</p>
@@ -68,50 +131,47 @@
                     <li>Add ons</li>
                 </ul>
             </div>
-            <div class="settings-content">
-                <h3>Business Profile</h3>
-                <p>Pretend not to be evil meow to be let out intently stare at the same.</p>
-                <form>
-                    <label for="business-name">Business Name</label>
-                    <input type="text" id="business-name" placeholder="Ex. ABC Pvt. Ltd.">
-                    
-                    <label for="business-logo">Business Logo</label>
-                    <div class="logo-upload">
-                        <div class="logo-placeholder"></div>
-                        <button>Change</button>
-                        <button>Remove</button>
-                    </div>
-
-                    <label for="contact-number">Primary Contact No.</label>
-                    <input type="text" id="contact-number" placeholder="+91 | Ex. 99999 99999">
-
-                    <label for="fiscal-year">Fiscal Year</label>
-                    <select id="fiscal-year">
-                        <option>Select Option</option>
-                    </select>
-
-                    <label for="industry">Industry</label>
-                    <select id="industry">
-                        <option>Select Option</option>
-                    </select>
-                </form>
+            <div class="content-wrap">
+                <div class="pc-content"></div>
+                <div class="m-content"></div>
             </div>
         </section>
     </main>
 
+    <!-- Firebase App (필수) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+      // Firebase 초기화
+      const firebaseConfig = {
+        apiKey: "AlzaSyDrarj4xZaC_EqRcSzskaMhWY34C2J9buw",
+        authDomain: "makeshop-project-146df.firebaseapp.com",
+        projectId: "makeshop-project-146df",
+        storageBucket: "makeshop-project-146df.appspot.com"
+      };
+
+      // Firebase 초기화는 한 번만 실행
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+      const db = firebase.firestore();
+      const auth = firebase.auth();
+
+      // 다른 JS 파일에서도 db, auth 객체를 사용할 수 있도록 글로벌로 설정
+      window.db = db;
+      window.auth = auth;
+
+      console.log('Firebase initialized successfully');
+    </script>
+
     <!-- Custom JavaScript -->
-    <script src="firebase.js"></script>
     <script src="common.js"></script>
+
 </body>
 </html>
-
-
-
-
-
-
-<!--
-git add .
-git commit -m ""
-git push origin main
--->

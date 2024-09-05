@@ -23,27 +23,30 @@ p {
     margin: 0 0 20px;
 }
 
+.flex {display:flex;}
+
 /* 헤더 스타일 */
-.header {
-    margin-left: 250px;
+.header { 
+    display: flex; 
+    background: #F7FAFC;
+    position: fixed;
+    width: 100%;
+}
+.header-wrap {
     padding: 20px 30px;
+    margin-left: 250px;
     display: flex;
     justify-content: space-between;
-    background: #F7FAFC;
+    width: 100%;
 }
-
-.sidebar {
-    background-color: #EDF2F7;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    height: 100%;
-    overflow-y: auto; 
-    top: 0;
+.pagetitle {
+    font-size: 1.5em;
+    font-weight: 700;
 }
-
 .logo {
     display: flex;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .logo .material-icons {
@@ -85,13 +88,13 @@ p {
 /* 사이드바 스타일 */
 .sidebar {
     width: var(--sidebar-width);
-    background-color: #F4F4F5;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #EDF2F7;
+    padding: 20px; 
     position: fixed; 
     height: 100%;
     overflow-y: auto;
-}
+    top: 0;
+} 
 
 .sidebar .search {
     display: flex;
@@ -142,14 +145,11 @@ p {
 /* 메인 컨텐츠 스타일 */
 .main-content {
     margin-left: 250px;
-    padding: 30px;
+    padding: 90px 30px 30px;
     background-color: #fff;
     min-height: 100vh;
 }
 
-.settings {
-    max-width: 800px; 
-}
 
 .settings-nav {
     margin-bottom: 20px;
@@ -174,11 +174,41 @@ p {
     color: #06080F;
 }
 
-.settings-content {
-    background-color: #E6E7EA;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.content-wrap {
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px; /* 박스 간격 */ 
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+.pc-content {
+    width: 71.3%;
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    aspect-ratio: 16 / 9; /* 16:9 비율 고정 */
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.m-content {
+    width: 30%;
+    background-color: #e0f7fa;
+    border: 1px solid #ddd;
+    aspect-ratio: 3 / 4;
+    position: relative;
+    height: auto; /* 혹시 height가 고정되어 있을 경우를 방지 */
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .content-wrap {
+        flex-direction: column;
+    }
+
+    .pc-content, .m-content {
+        width: 100%; /* 작은 화면에서 전체 너비 사용 */
+    }
 }
 
 form {
