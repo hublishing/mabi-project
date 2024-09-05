@@ -1,62 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link href="public/css/common.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>makeshop project</title>
+    <link rel="stylesheet" href="./public/css/common.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- 헤더 영역 -->
-    <div id="header-placeholder"></div>
+    
+    <div class="wrapper">
+        <form action="">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="email" required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn">Login</button>
 
-    <!-- 메인 컨텐츠 영역 -->
-    <div id="content-placeholder"></div>
+            <div class="register-link">
+                <p>Don't have an account? <a href="./page/join.html">Register</a></p>
+            </div>
+        </form>
+    </div>
 
-    <!-- 사이드바 -->
-    <aside class="sidebar">
-        <div class="logo"><span class="material-icons">dashboard</span> Dashboard</div>
-        <ul>
-            <li><a href="page/content1.html">Content 1</a></li>
-            <li><a href="page/join.html">Join</a></li>
-            <li><a href="page/login.html">Login</a></li>
-        </ul>
-    </aside>
-
-    <!-- JavaScript로 각 페이지 로드 -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 헤더 로드
-            fetch('page/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                    const script = document.createElement('script');
-                    script.src = 'public/js/header.js';
-                    document.body.appendChild(script); // 헤더 JS 동적으로 삽입
-                })
-                .catch(error => console.error('Error loading header:', error));
-
-            // 메인 컨텐츠 로드 (초기 로드되는 컨텐츠)
-            fetch('page/content1.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('content-placeholder').innerHTML = data;
-                    const link = document.createElement('link');
-                    link.rel = 'stylesheet';
-                    link.href = 'public/css/content1.css';
-                    document.head.appendChild(link); // Content1 CSS 동적으로 삽입
-                    const script = document.createElement('script');
-                    script.src = 'public/js/content1.js';
-                    document.body.appendChild(script); // Content1 JS 동적으로 삽입
-                })
-                .catch(error => console.error('Error loading content:', error));
-        });
-    </script>
-
-    <!-- Custom JavaScript -->
-    <script src="public/js/common.js"></script>
+    <script src="./public/js/login.js"></script> <!-- login.js 연결 -->
 </body>
 </html>
