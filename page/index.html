@@ -3,175 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings - Dashboard</title>
-    <!-- Google Fonts & Material Icons -->
+    <title>Main Page</title>
+    <link href="public/css/common.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/common.css">
 </head>
-<body> 
-    
-    <!-- 헤더 -->
-    <header class="header">
-        <div class="header-wrap">
-            <div class="pagetitle"> 
-                <span>{page title}</span>
-            </div>
-            <div class="profile">
-                <span class="material-icons">account_circle</span>
-                <div class="profile-info">
-                    <!-- 로그인 상태 -->
-                    <div id="loggedInContent" style="display: none;">
-                        <p>환영합니다, <span id="userEmail"></span>님!</p>
-                        <button id="logoutButton">로그아웃</button>
-                    </div>
+<body>
+    <!-- 헤더 영역 -->
+    <div id="header-placeholder"></div>
 
-                    <!-- 로그아웃 상태 -->
-                    <div id="loggedOutContent" style="display: none;">
-                        <p>로그인이 필요합니다.</p>
-                        <button onclick="showLoginForm()">로그인</button>
-                    </div>
-                </div>
-            </div>
-            <!-- 회원가입 폼 -->
-            <form id="signupForm">
-                <input type="email" id="signupEmail" placeholder="이메일" required>
-                <input type="password" id="signupPassword" placeholder="비밀번호" required>
-                <button type="submit">회원가입</button>
-            </form> 
+    <!-- 메인 컨텐츠 영역 -->
+    <div id="content-placeholder"></div>
 
-            <!-- 로그인 폼 -->
-            <form id="loginForm">
-                <h2>로그인</h2>
-                <input type="email" id="loginEmail" placeholder="이메일">
-                <input type="password" id="loginPassword" placeholder="비밀번호">
-                <button type="submit">로그인</button>
-            </form>
-
-        </div>
-    </header>
-    
     <!-- 사이드바 -->
     <aside class="sidebar">
-        <div class="logo"><span class="material-icons">dashboard</span> Dashboard</div> 
-        <div>
-            <div>Purchase</div>
-            <ul>
-                <li>Purchase</li>
-                <li>Sales</li>
-                <li>Purchase</li>
-                <li>Items</li>
-                <li>Accounts</li>
-                <li>Reports</li>
-                <li>Settings</li>
-                <li>Log out</li>
-            </ul> 
-        </div>
-    </aside> 
+        <div class="logo"><span class="material-icons">dashboard</span> Dashboard</div>
+        <ul>
+            <li><a href="content1.html">Content 1</a></li>
+            <li><a href="join.html">Join</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </aside>
 
-    <!-- 메인 컨텐츠 -->
-    <main class="main-content">
-        
-        <form id="widgetForm">
-            <!-- InquiryTimeFrom (검색 시작 일자) -->
-            <label for="inquiryTimeFrom">쿠폰 조회 시작 일자:</label>
-            <input type="datetime-local" id="inquiryTimeFrom" name="inquiryTimeFrom">
-            
-            <!-- InquiryTimeTo (검색 종료 일자) -->
-            <label for="inquiryTimeTo">쿠폰 조회 종료 일자:</label>
-            <input type="datetime-local" id="inquiryTimeTo" name="inquiryTimeTo">
-            
-            <!-- InquiryType (검색 타입) -->
-            <label for="inquiryType">검색 타입:</label>
-            <select id="inquiryType" name="inquiryType">
-                <option value="reg">생성일</option>
-                <option value="mod">수정일</option>
-            </select>
-            
-            <!-- Issue Type (쿠폰 발급 타입) -->
-            <label for="issueType">쿠폰 발급 타입:</label>
-            <select id="issueType" name="issueType">
-                <option value="DOWN">다운로드</option>
-                <option value="MANUAL">수동 발급</option>
-                <option value="AUTO">자동 발급</option>
-            </select>
-            
-            <!-- Purpose (쿠폰 생성 업체) -->
-            <label for="purpose">쿠폰 생성 업체:</label>
-            <select id="purpose" name="purpose">
-                <option value="N_C">나인큐브</option>
-            </select>
-            
-            <!-- Limit (조회할 쿠폰 수) -->
-            <label for="limit">조회할 쿠폰 수 (최대 50):</label>
-            <input type="number" id="limit" name="limit" max="50" min="1" value="50">
-            
-            <!-- Fields (조회할 필드) -->
-            <label for="fields">조회할 필드:</label>
-            <input type="text" id="fields" name="fields" value="uid,cate1,product_name">
-        
-            <button type="submit">위젯 생성</button>
-        </form>
-
-        <section class="settings">
-            <h2>Settings</h2>
-            <p>Pretend not to be evil meow to be let out intently stare at the same.</p>
-            <div class="settings-nav">
-                <ul>
-                    <li class="active">Business Profile</li>
-                    <li>User</li>
-                    <li>Preferences</li>
-                    <li>e-Way</li>
-                    <li>Templates</li>
-                    <li>Notifications</li>
-                    <li>Reminders</li>
-                    <li>Data Backup</li>
-                    <li>Subscription</li>
-                    <li>Add ons</li>
-                </ul>
-            </div>
-            <div class="content-wrap">
-                <div class="pc-content"></div>
-                <div class="m-content"></div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Firebase App (필수) -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-
-    <!-- Firebase Authentication -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-
-    <!-- Firebase Firestore -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
+    <!-- JavaScript로 각 페이지 로드 -->
     <script>
-      // Firebase 초기화
-      const firebaseConfig = {
-        apiKey: "AlzaSyDrarj4xZaC_EqRcSzskaMhWY34C2J9buw",
-        authDomain: "makeshop-project-146df.firebaseapp.com",
-        projectId: "makeshop-project-146df",
-        storageBucket: "makeshop-project-146df.appspot.com"
-      };
+        document.addEventListener("DOMContentLoaded", function() {
+            // 헤더 로드
+            fetch('page/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    const script = document.createElement('script');
+                    script.src = 'public/js/header.js';
+                    document.body.appendChild(script); // 헤더 JS 동적으로 삽입
+                })
+                .catch(error => console.error('Error loading header:', error));
 
-      // Firebase 초기화는 한 번만 실행
-      if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-      }
-      const db = firebase.firestore();
-      const auth = firebase.auth();
-
-      // 다른 JS 파일에서도 db, auth 객체를 사용할 수 있도록 글로벌로 설정
-      window.db = db;
-      window.auth = auth;
-
-      console.log('Firebase initialized successfully');
+            // 메인 컨텐츠 로드 (초기 로드되는 컨텐츠)
+            fetch('page/content1.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content-placeholder').innerHTML = data;
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = 'public/css/content1.css';
+                    document.head.appendChild(link); // Content1 CSS 동적으로 삽입
+                    const script = document.createElement('script');
+                    script.src = 'public/js/content1.js';
+                    document.body.appendChild(script); // Content1 JS 동적으로 삽입
+                })
+                .catch(error => console.error('Error loading content:', error));
+        });
     </script>
 
     <!-- Custom JavaScript -->
-    <script src="js/header.js"></script>
-
+    <script src="public/js/common.js"></script>
 </body>
 </html>
