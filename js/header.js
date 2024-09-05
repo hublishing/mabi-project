@@ -1,4 +1,4 @@
-console.log("common.js 파일이 로드되었습니다.");
+console.log("header.js 파일이 로드되었습니다.");
 
 // Firestore와 Authentication 객체는 전역에서 사용
 const db = window.db;
