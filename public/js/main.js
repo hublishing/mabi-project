@@ -6,7 +6,7 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         const email = user.email;
         const welcomeMessage = document.getElementById('welcomeMessage');
-        welcomeMessage.textContent = `${email}님 안녕하세요.`;
+        welcomeMessage.textContent = `${email}`;
     } else {
         // 사용자가 로그인하지 않은 경우 로그인 페이지로 리디렉션
         window.location.href = "../index.html";
