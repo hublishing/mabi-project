@@ -25,7 +25,7 @@ document.getElementById('logoutButton').addEventListener('click', async () => {
 });
 
 // 사이드바 로드
-fetch('/side.html')
+fetch('/page/side.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('sidebarContainer').innerHTML = data;
@@ -33,14 +33,14 @@ fetch('/side.html')
     });
 
 // 네비게이션 로드
-fetch('/nav.html')
+fetch('/page/nav.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('navContainer').innerHTML = data;
         initializeNav();  // 네비게이션 관련 스크립트 초기화
     });
 
-    
+
 const checkBoxes = document.querySelectorAll('.checkbox input');
 
 checkBoxes.forEach(c => {
