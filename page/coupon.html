@@ -23,97 +23,53 @@
                     <h4>쿠폰리스트 <span>쿠폰리스트</span></h4>
                     <p>쿠폰리스트쿠폰리스트쿠폰리스트</p> 
                 </div>
-
-                <div class="job-cards">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="job-info">
-                                <i class="bx bxl-apple"></i>
-                                <div>
-                                    <h5>Apple <span>| Just Now</span></h5>
-                                    <a href="#">QWERASDFAGG</a>
-                                    <p>asdfsafdsf</p>
-                                </div>
-                            </div>
-                            <i class="bx bx-bookmark-plus"></i>
-                        </div>
-                        <div class="card-tags">
-                            <a href="#">asdfsaf</a>
-                            <a href="#">asdfsaf</a>
-                        </div>
-                        <div class="card-desc">
-                            asdfadfsfdsdfsfsfdsafsadf
-                            asdfadfsfdsdfsfsfdsafsadfa
-                            dsafaqweqqweq
-                        </div>
+                
+                <div class="">
+                    <div class=""> 
+                        <label>
+                            <input type="checkbox" id="widgetVisibility"> 위젯 노출 여부
+                        </label>
                     </div> 
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="job-info">
-                                <i class="bx bxl-apple"></i>
-                                <div>
-                                    <h5>Apple <span>| Just Now</span></h5>
-                                    <a href="#">QWERASDFAGG</a>
-                                    <p>asdfsafdsf</p>
-                                </div>
-                            </div>
-                            <i class="bx bx-bookmark-plus"></i>
-                        </div>
-                        <div class="card-tags">
-                            <a href="#">asdfsaf</a>
-                            <a href="#">asdfsaf</a>
-                        </div>
-                        <div class="card-desc">
-                            asdfadfsfdsdfsfsfdsafsadf
-                            asdfadfsfdsdfsfsfdsafsadfa
-                            dsafaqweqqweq
-                        </div>
+                    <div class=""> 
+                        <label>
+                            위젯 제목: <input type="text" id="widgetTitle" placeholder="위젯 제목 입력">
+                        </label> 
+                    </div> 
+                    <div class="">  
+                        <table id="couponTable">
+                            <thead>
+                                <tr>
+                                    <th>쿠폰 ID</th>
+                                    <th>쿠폰 이름</th>
+                                    <th>쿠폰 설명</th>
+                                    <th>선택</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 쿠폰 목록은 MakeShop API에서 동적으로 불러와서 채워집니다 -->
+                            </tbody>
+                        </table>                         
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="job-info">
-                                <i class="bx bxl-apple"></i>
-                                <div>
-                                    <h5>Apple <span>| Just Now</span></h5>
-                                    <a href="#">QWERASDFAGG</a>
-                                    <p>asdfsafdsf</p>
-                                </div>
-                            </div>
-                            <i class="bx bx-bookmark-plus"></i>
-                        </div>
-                        <div class="card-tags">
-                            <a href="#">asdfsaf</a>
-                            <a href="#">asdfsaf</a>
-                        </div>
-                        <div class="card-desc">
-                            asdfadfsfdsdfsfsfdsafsadf
-                            asdfadfsfdsdfsfsfdsafsadfa
-                            dsafaqweqqweq
-                        </div>
+                    <div class=""> 
+                        <div>이 위젯에만 적용할 CSS</div>
+                        <label>
+                            <textarea id="widgetCSS" placeholder="여기에 CSS를 입력하세요"></textarea>
+                        </label> 
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="job-info">
-                                <i class="bx bxl-apple"></i>
-                                <div>
-                                    <h5>Apple <span>| Just Now</span></h5>
-                                    <a href="#">QWERASDFAGG</a>
-                                    <p>asdfsafdsf</p>
-                                </div>
-                            </div>
-                            <i class="bx bx-bookmark-plus"></i>
-                        </div>
-                        <div class="card-tags">
-                            <a href="#">asdfsaf</a>
-                            <a href="#">asdfsaf</a>
-                        </div>
-                        <div class="card-desc">
-                            asdfadfsfdsdfsfsfdsafsadf
-                            asdfadfsfdsdfsfsfdsafsadfa
-                            dsafaqweqqweq
-                        </div>
+                    <div class=""> 
+                        <div>이 위젯에만 적용할 JavaScript</div>
+                        <label>
+                            <textarea id="widgetJS" placeholder="여기에 JavaScript 코드를 입력하세요"></textarea>
+                        </label>                         
+                    </div>
+                    <button id="generateWidgetButton">위젯 생성</button>
+
+                    <div class="">
+                        <div id="widgetPreview"></div>
                     </div>
                 </div>
+
+                
 
             </div>
             <div class="filters">
@@ -185,6 +141,7 @@
 
 
 
+    <script type="module" src="/public/js/coupon.js"></script>
     <script type="module" src="/public/js/load.js"></script>
     <script type="module" src="/public/js/main.js"></script>
 </body>

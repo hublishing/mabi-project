@@ -1,3 +1,7 @@
+import { auth } from '../../firebase.js';  
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+// 사이드바 로드 및 초기화
 document.addEventListener("DOMContentLoaded", () => {
     // 사이드바 로드
     fetch('/page/side.html')
@@ -10,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             document.getElementById('sidebarContainer').innerHTML = data;
             initializeSidebar();  // 사이드바 관련 스크립트 초기화
+            setActiveMenuItem();  // 사이드바 로드 후에 active 클래스 설정
         })
         .catch(error => {
             console.error('사이드바 로드 중 오류 발생:', error);
@@ -30,17 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => {
             console.error('네비게이션 로드 중 오류 발생:', error);
         });
- 
 });
-
-
 
 // 사이드바와 네비게이션 관련 스크립트 초기화 함수들
 function initializeSidebar() {
     // 로그아웃 버튼 이벤트
     document.getElementById('logoutButton').addEventListener('click', async () => {
         try {
-            await signOut(auth);
+            await signOut(auth);  // signOut 함수가 Firebase에서 정상적으로 불러와지도록 수정
             console.log('로그아웃 성공');
             window.location.href = "../index.html"; // 로그아웃 후 로그인 페이지로 리디렉션
         } catch (error) {
@@ -77,24 +79,20 @@ function initializeNav() {
         }
     });
 }
- 
 
-document.addEventListener("DOMContentLoaded", () => {
-    // 현재 페이지의 마지막 경로 추출 (예: main.html, coupon.html)
+// 현재 페이지 URL과 사이드바 항목의 href를 비교해 active 클래스 설정
+function setActiveMenuItem() {
     const currentPage = window.location.pathname.split('/').pop();
 
-    // 모든 사이드바 항목 가져오기
     const menuItems = document.querySelectorAll('.side-nav .item');
 
-    // 각 메뉴 항목 순회
     menuItems.forEach(item => {
         const link = item.querySelector('a').getAttribute('href').split('/').pop();  // 메뉴 항목의 마지막 경로만 추출
         
-        // 현재 페이지 URL의 마지막 경로와 메뉴 항목의 href가 일치하면 active 클래스 추가
         if (link === currentPage) {
             item.classList.add('active');
         } else {
-            item.classList.remove('active');  // 일치하지 않으면 active 클래스 제거
+            item.classList.remove('active');
         }
     });
-});
+}
