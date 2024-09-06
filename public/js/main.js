@@ -23,3 +23,47 @@ document.getElementById('logoutButton').addEventListener('click', async () => {
         console.error('로그아웃 실패:', error);
     }
 });
+
+// 사이드바 로드
+fetch('/side.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('sidebarContainer').innerHTML = data;
+        initializeSidebar();  // 사이드바 관련 스크립트 초기화
+    });
+
+// 네비게이션 로드
+fetch('/nav.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('navContainer').innerHTML = data;
+        initializeNav();  // 네비게이션 관련 스크립트 초기화
+    });
+
+    
+const checkBoxes = document.querySelectorAll('.checkbox input');
+
+checkBoxes.forEach(c => {
+    c.addEventListener("change", () => {
+        const label = document.querySelector(`label[for="${c.name}"]`);
+        if (c.checked) {
+            label.style.color = '#1A1E20';  // 체크된 상태일 때 색상 변경
+        } else {
+            label.style.color = '#808487';  // 체크되지 않은 상태일 때 색상 변경
+        }
+    });
+});
+
+const sidebar = document.querySelector('.sidebar');
+const menuBtn = document.getElementById('menuToggle');
+
+menuBtn.addEventListener("click", () => {
+    sidebar.style.left = "0px";  // 사이드바 열기
+});
+
+document.addEventListener("click", (event) => {
+    const isClickInside = sidebar.contains(event.target) || menuBtn.contains(event.target);
+    if (!isClickInside) {
+        sidebar.style.left = "-235px";  // 사이드바 닫기
+    }
+});
