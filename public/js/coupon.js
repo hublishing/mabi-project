@@ -6,47 +6,51 @@ let pageSize = 15;
 let searchType = 'subject';  // 검색 유형: 쿠폰명 or 쿠폰번호
 let searchKeyword = '';      // 검색어
 
-// 현재 시간 가져오기
+// 현재 시간 가져오기 (UTC 형식으로 변환)
 function getCurrentDateTime() {
-    return new Date().toISOString().slice(0, 19).replace('T', ' ');
+    const now = new Date();
+    return now.toISOString().slice(0, 19).replace('T', ' '); // "YYYY-MM-DD HH:MM:SS" 형식
 }
 
-// MakeShop API 요청 함수 (다운로드 쿠폰만 가져오기)
-function fetchCoupons(page, searchType, searchKeyword) {
-    const currentTime = getCurrentDateTime();
-    const url = `/list/open_api.html?mode=search&type=smart_coupon&page=${page}&limit=${pageSize}&issue_type=DOWN&InquiryTimeFrom=${currentTime}`;
+function fetchCoupons(page, searchType, searchKeyword) {  
+    const limit = 15;  // 한번에 조회할 최대 쿠폰 수
+    const issueType = 'DOWN';  // 다운로드 타입 쿠폰만 가져오기
+
+    // 쿠폰 번호로 조회할 경우 다른 조건을 생략
+    const couponnum = '';  // 쿠폰 번호가 있는 경우 이 값을 설정하세요.
+
+    let url = `http://www.sappun.co.kr/list/open_api.html?mode=search&type=smart_coupon&page=${page}&limit=${limit}&issue_type=${issueType}`;
+
+    if (couponnum) {
+        url += `&couponnum=${couponnum}`;
+    }
+
+    console.log('API 호출 URL:', url);  // URL 확인용
 
     fetch(url, {
+        method: 'GET',
         headers: {
             'Shopkey': '5a4531b31b7204042db58179eb574369',  // 상점 키
             'Licensekey': 'NzUwMTUzOTc3NDhlZTYyODEzYzRiMDI2YjZmNzQzYTU='  // 라이센스 키
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('네트워크 응답이 실패했습니다');
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.return_code === '0000') {
-            const filteredCoupons = filterCoupons(data.list, searchType, searchKeyword, currentTime);
-            displayCoupons(filteredCoupons);
-            updatePagination(data.count, page);
+            console.log('쿠폰 데이터:', data.list);
+            // 쿠폰 데이터를 필터링하고 화면에 표시
+            displayCoupons(data.list);
         } else {
             console.error('쿠폰 불러오기 실패:', data);
         }
     })
-    .catch(error => console.error('쿠폰 불러오기 오류:', error));
-}
-
-// 사용 기간을 확인해 현재 사용 가능한 쿠폰만 필터링하는 함수
-function filterCoupons(coupons, searchType, searchKeyword, currentTime) {
-    return coupons.filter(coupon => {
-        const usePeriod = coupon.use_period.split(' ~ ');
-        const startDate = new Date(usePeriod[0]);
-        const endDate = new Date(usePeriod[1]);
-        const currentDateTime = new Date(currentTime);
-
-        const isWithinPeriod = currentDateTime >= startDate && currentDateTime <= endDate;
-        const matchesSearch = coupon[searchType].includes(searchKeyword);
-
-        return isWithinPeriod && matchesSearch;
+    .catch(error => {
+        console.error('쿠폰 불러오기 오류:', error);
     });
 }
 
@@ -63,7 +67,7 @@ function displayCoupons(coupons) {
                 <p>쿠폰 이름: ${coupon.subject}</p>
                 <p>쿠폰 설명: ${coupon.comment}</p>
                 <p>발급 상태: ${coupon.issue_type}</p>
-                <p>사용 상태: ${coupon.coupon_use_device}</p>
+                <p>사용 범위: ${coupon.coupon_use_device}</p>
                 <p>사용 기간: ${coupon.use_period}</p>
                 <p>생성일: ${coupon.reg_date}</p>
             </div>
@@ -72,41 +76,15 @@ function displayCoupons(coupons) {
     });
 }
 
-// 페이지네이션 업데이트 함수
-function updatePagination(totalCount, currentPage) {
-    const totalPages = Math.ceil(totalCount / pageSize);
-
-    document.getElementById('currentPage').innerText = currentPage;
-    document.getElementById('prevPage').disabled = currentPage === 1;
-    document.getElementById('nextPage').disabled = currentPage === totalPages;
-}
-
-// 페이지 변경 이벤트
-document.getElementById('prevPage').addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--;
-        fetchCoupons(currentPage, searchType, searchKeyword);
-    }
+// 페이지 로드 시 쿠폰 목록 불러오기
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = 1;
+    fetchCoupons(currentPage, 'subject', '');
 });
 
-document.getElementById('nextPage').addEventListener('click', () => {
-    currentPage++;
-    fetchCoupons(currentPage, searchType, searchKeyword);
-});
 
-// 검색 버튼 클릭 이벤트
-document.getElementById('searchButton').addEventListener('click', () => {
-    searchType = document.getElementById('searchType').value;
-    searchKeyword = document.getElementById('searchInput').value.trim();
+///////////////////////////
 
-    currentPage = 1;  // 검색 시 첫 페이지로 이동
-    fetchCoupons(currentPage, searchType, searchKeyword);
-});
-
-// 페이지 로드 시 디폴트 상태로 쿠폰 목록 불러오기
-document.addEventListener('DOMContentLoaded', () => {
-    fetchCoupons(currentPage, searchType, searchKeyword);
-});
 
 // 위젯 생성 후 Firebase에 저장하는 함수
 function saveWidgetToFirebase(widgetData) {
