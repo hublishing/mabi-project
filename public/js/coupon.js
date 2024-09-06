@@ -5,83 +5,22 @@ let currentPage = 1;
 let pageSize = 15;
 let searchType = 'subject';  // 검색 유형: 쿠폰명 or 쿠폰번호
 let searchKeyword = '';      // 검색어
-
-// 현재 시간 가져오기 (UTC 형식으로 변환)
-function getCurrentDateTime() {
-    const now = new Date();
-    return now.toISOString().slice(0, 19).replace('T', ' '); // "YYYY-MM-DD HH:MM:SS" 형식
+ 
+// Netlify Functions로 쿠폰 목록 요청
+function fetchCoupons() {
+    fetch('https://api-project-c.netlify.app/.netlify/functions/fetchCoupons?page=1&limit=15')
+        .then(response => response.json())
+        .then(data => {
+            console.log('쿠폰 데이터:', data);
+            // 쿠폰 데이터를 화면에 표시하는 로직
+        })
+        .catch(error => console.error('API 요청 중 오류:', error));
 }
 
-function fetchCoupons(page, searchType, searchKeyword) {  
-    const limit = 15;  // 한번에 조회할 최대 쿠폰 수
-    const issueType = 'DOWN';  // 다운로드 타입 쿠폰만 가져오기
-
-    // 쿠폰 번호로 조회할 경우 다른 조건을 생략
-    const couponnum = '';  // 쿠폰 번호가 있는 경우 이 값을 설정하세요.
-
-    let url = `http://www.sappun.co.kr/list/open_api.html?mode=search&type=smart_coupon&page=${page}&limit=${limit}&issue_type=${issueType}`;
-
-    if (couponnum) {
-        url += `&couponnum=${couponnum}`;
-    }
-
-    console.log('API 호출 URL:', url);  // URL 확인용
-
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'Shopkey': '5a4531b31b7204042db58179eb574369',  // 상점 키
-            'Licensekey': 'NzUwMTUzOTc3NDhlZTYyODEzYzRiMDI2YjZmNzQzYTU='  // 라이센스 키
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('네트워크 응답이 실패했습니다');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.return_code === '0000') {
-            console.log('쿠폰 데이터:', data.list);
-            // 쿠폰 데이터를 필터링하고 화면에 표시
-            displayCoupons(data.list);
-        } else {
-            console.error('쿠폰 불러오기 실패:', data);
-        }
-    })
-    .catch(error => {
-        console.error('쿠폰 불러오기 오류:', error);
-    });
-}
-
-// 쿠폰 리스트를 화면에 표시하는 함수
-function displayCoupons(coupons) {
-    const couponList = document.getElementById('couponList');
-    couponList.innerHTML = '';  // 기존 리스트 초기화
-
-    coupons.forEach(coupon => {
-        const listItem = document.createElement('div');
-        listItem.innerHTML = `
-            <div>
-                <p>쿠폰 번호: ${coupon.couponnum}</p>
-                <p>쿠폰 이름: ${coupon.subject}</p>
-                <p>쿠폰 설명: ${coupon.comment}</p>
-                <p>발급 상태: ${coupon.issue_type}</p>
-                <p>사용 범위: ${coupon.coupon_use_device}</p>
-                <p>사용 기간: ${coupon.use_period}</p>
-                <p>생성일: ${coupon.reg_date}</p>
-            </div>
-        `;
-        couponList.appendChild(listItem);
-    });
-}
-
-// 페이지 로드 시 쿠폰 목록 불러오기
-document.addEventListener('DOMContentLoaded', function() {
-    const currentPage = 1;
-    fetchCoupons(currentPage, 'subject', '');
+// 페이지 로드 시 호출
+document.addEventListener('DOMContentLoaded', () => {
+    fetchCoupons();
 });
-
 
 ///////////////////////////
 
