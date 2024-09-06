@@ -18,8 +18,8 @@ function fetchCoupons(page, searchType, searchKeyword) {
 
     fetch(url, {
         headers: {
-            'Shopkey': '{상점키}',  // 상점 키
-            'Licensekey': '{라이센스키}'  // 라이센스 키
+            'Shopkey': '5a4531b31b7204042db58179eb574369',  // 상점 키
+            'Licensekey': 'NzUwMTUzOTc3NDhlZTYyODEzYzRiMDI2YjZmNzQzYTU='  // 라이센스 키
         }
     })
     .then(response => response.json())

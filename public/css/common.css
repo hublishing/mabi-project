@@ -476,9 +476,8 @@ border-radius: 8px;}
     gap: 20px;
     width: 100%;
  }
- .searchfilters .search {
-    width: 30%;
-} 
+ 
+ 
 
 .contenttitle {
     width: 100px;
@@ -492,6 +491,15 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 8px;
+    width: 100px;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    width: 100%;
 }
 
 input {
