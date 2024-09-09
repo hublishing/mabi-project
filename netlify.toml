@@ -1,2 +1,15 @@
+[dev]
+  command = "npm run dev"
+  framework = "#custom"
+  targetPort = 8888
+  port = 8888
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://www.sappun.co.kr/:splat"
+  status = 200
+  force = true
+
+
 [build]
   functions = "functions"
