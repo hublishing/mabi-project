@@ -1,5 +1,5 @@
 // API 키
-const apiKey = 'test_f55f990ba01a3db38ad251cbc28700067ca3b0ad0fa7af6ab748d3da6e7f98f9efe8d04';
+const apiKey = 'test_f55f990ba01a3db38ad251cbc28700067ca3b0ad0fa7af6ab748d3da6e7f98f9efe8d04e6d233bd35cf2fabdeb93fb0d';
  
 // 최근 등록된 아이템을 가져오는 함수
 const fetchRecentItems = async () => {
