@@ -1,11 +1,12 @@
 // API 키
-const apiKey = 'test_f55f990ba01a3db38ad251cbc28700067ca3b0ad0fa7af6ab748d3da6e7f98f9efe8d04e6d233bd35cf2fabdeb93fb0d';
-
+const apiKey = 'test_f55f990ba01a3db38ad251cbc28700067ca3b0ad0fa7af6ab748d3da6e7f98f9efe8d04';
+ 
 // 최근 등록된 아이템을 가져오는 함수
 const fetchRecentItems = async () => {
     console.log('최근 아이템을 가져오는 중...');
     try {
-        const response = await fetch(`https://open.api.nexon.com/mabinogi/v1/auction/list?auction_item_category=검`, {
+        // 카테고리 없이 전체 데이터 요청
+        const response = await fetch(`https://open.api.nexon.com/mabinogi/v1/auction/list`, {
             method: 'GET',
             headers: {
                 'x-nxopen-api-key': apiKey,
@@ -16,7 +17,7 @@ const fetchRecentItems = async () => {
         console.log('API 응답:', result); // API 응답 로그
 
         if (response.ok) {
-            displayItems(result.auction_item.slice(0, 10));
+            displayItems(result.auction_item.slice(0, 10)); // 최근 10개 아이템 표시
         } else {
             console.error('오류:', result.error.message);
         }
@@ -25,10 +26,11 @@ const fetchRecentItems = async () => {
     }
 };
 
+
 // 검색 버튼 클릭 시 아이템 검색
 document.getElementById('searchButton').addEventListener('click', async () => {
     console.log('검색 버튼 클릭됨'); // 로그 추가
-    const searchTerm = document.getElementById('searchInput').value;
+    const searchTerm = document.getElementById('searchInput').value.trim();
     console.log('검색어:', searchTerm);
     if (!searchTerm) return;
 
@@ -36,6 +38,7 @@ document.getElementById('searchButton').addEventListener('click', async () => {
         const encodedSearchTerm = encodeURIComponent(searchTerm);
         console.log('인코딩된 검색어:', encodedSearchTerm); // 인코딩된 검색어 로그
 
+        // API 호출을 통해 아이템을 검색
         const response = await fetch(`https://open.api.nexon.com/mabinogi/v1/auction/list?item_name=${encodedSearchTerm}`, {
             method: 'GET',
             headers: {
@@ -47,6 +50,7 @@ document.getElementById('searchButton').addEventListener('click', async () => {
         console.log('API 응답:', result); // API 응답 로그
 
         if (response.ok) {
+            // 검색 결과를 표시
             displayItems(result.auction_item);
         } else {
             console.error('오류:', result.error.message);
