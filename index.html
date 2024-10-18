@@ -6,7 +6,20 @@
     <title>게임 아이템 검색</title>
 </head>
 <body>
-    <div id="root"></div>
-    <script src="index.js" type="text/javascript"></script>
+    <div id="app">
+        <h1>게임 아이템 검색</h1>
+        <input type="text" id="searchInput" placeholder="아이템 이름을 입력하세요" />
+        <button id="searchButton">검색</button>
+
+        <div id="itemList"></div>
+
+        <div id="itemDetails" style="display: none;">
+            <h2>상세 내용</h2>
+            <p id="itemName"></p>
+            <p id="itemPrice"></p>
+            <div id="itemOptions"></div>
+        </div>
+    </div>
+    <script src="index.js" type="text/javascript" defer></script>
 </body>
 </html>
