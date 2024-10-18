@@ -5,34 +5,110 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>makeshop project</title>
-    <link rel="stylesheet" href="./public/css/login.css">
+    <title>mabi project</title>
+    <link rel="stylesheet" href="/public/css/common.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
-<body>
-    
-    <div class="wrapper">
-        <form action="">
-            <h1>Login</h1>
-            <div class="input-box">
-                <input type="text" placeholder="email" required>
-                <i class="bx bxs-user"></i>
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="password" required>
-                <i class="bx bxs-lock-alt"></i>
-            </div>
-            <div class="errortext">
-                errortext
-            </div>
-            <button type="submit" class="btn">Login</button>
+<body> 
+ 
+    <div id="sidebarContainer"></div> 
 
-            <div class="register-link">
-                <p>Don't have an account? <a href="./page/join.html">Register</a></p>
+
+    <div class="container">
+        <div id="navContainer"></div>
+
+        <div class="main">
+            <div class="content">
+                <div class="header">
+                    <h4>쿠폰리스트 <span>쿠폰리스트</span></h4>
+                    <p>쿠폰리스트쿠폰리스트쿠폰리스트</p> 
+                </div>
+                
+                <div class="wrapper"> 
+                    <div class="flex"> 
+                        <div class="contenttitle">위젯 제목</div>
+                        <div class="input-box"><input type="text" id="widgetTitle" placeholder="위젯 제목 입력"></div>
+                    </div> 
+                    <div class="flex">   
+                        <div class="contenttitle">검색어</div>
+                        <div class="searchfilters">
+                            <select id="searchType">
+                                <option value="subject">쿠폰명</option>
+                                <option value="couponnum">쿠폰번호</option>
+                            </select> 
+                            <div class="search input-box"> 
+                                <input type="text" id="searchInput" placeholder="검색어를 입력하세요.">
+                            </div> 
+                            <button id="searchButton">검색</button>
+                        </div>
+                    </div>
+                    <div class="">    
+                        <div id="couponList"></div>
+                        
+                        <div id="pagination">
+                            <button id="prevPage" disabled>이전</button>
+                            <span id="currentPage">1</span>
+                            <button id="nextPage">다음</button>
+                        </div>                       
+                    </div>
+
+                    <div class=""> 
+                        <div>이 위젯에만 적용할 CSS</div>
+                        <label>
+                            <textarea id="widgetCSS" placeholder="여기에 CSS를 입력하세요"></textarea>
+                        </label> 
+                    </div>
+                    <div class=""> 
+                        <div>이 위젯에만 적용할 JavaScript</div>
+                        <label>
+                            <textarea id="widgetJS" placeholder="여기에 JavaScript 코드를 입력하세요"></textarea>
+                        </label>                         
+                    </div>
+                    <button id="generateWidgetButton">위젯 생성</button>
+
+                    <div class="">
+                        <div id="widgetPreview"></div>
+
+                        <!-- MakeShop에 삽입할 HTML/JS 코드 출력 영역 -->
+                        <div id="embedCodeContainer" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+                            <!-- MakeShop에 삽입할 HTML 및 JS 코드를 여기에 표시 -->
+                        </div>
+                    </div>
+                </div>
+
+                
+
             </div>
-        </form>
+            <div class="filters">
+                <div class="header">
+                    <h3>Filter</h3>
+                    <a href="#">Clear all</a>
+                </div>
+
+                <div class="item">
+                    <div class="widget-list-section" style="margin-top: 40px;">
+                        <h3>생성된 위젯 리스트</h3>
+                        <ul id="widgetList">
+                            <!-- Firebase에서 불러온 위젯 목록이 여기에 추가됩니다 -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div id="widgetDetails">
+                        <!-- 클릭한 위젯의 상세 정보가 여기에 표시됩니다 -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
-    <script type="module" src="./public/js/login.js"></script>
+
+
+    <script type="module" src="/public/js/coupon.js"></script>
+    <script type="module" src="/public/js/load.js"></script>
+    <script type="module" src="/public/js/main.js"></script>
 </body>
 </html>
