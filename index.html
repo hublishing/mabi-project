@@ -13,13 +13,20 @@
 
         <div id="itemList"></div>
 
-        <div id="itemDetails" style="display: none;">
-            <h2>상세 내용</h2>
-            <p id="itemName"></p>
-            <p id="itemPrice"></p>
-            <div id="itemOptions"></div>
+        <div class="" id="itemDetails" style="display: none;">
+            <h2 class="main-title text-center" id="itemName">아이템 이름</h2>
+            <div class="square-img-box contain" style="max-width: 60px; margin: 0px auto;">
+                <img id="itemImage" class="main-img" alt="아이템 이미지" title="아이템 이미지">
+            </div>
+            <label class="form-label">가격</label>
+            <input class="form-control text-right mt-2" id="itemPrice" value="" readonly>
+            <label class="form-label">경매장 내려가는 시간</label>
+            <input class="form-control text-right mt-2" id="itemExpiration" value="" readonly>
+            <div class="options" id="itemOptions"></div>
         </div>
+        
     </div>
     <script src="index.js" type="text/javascript" defer></script>
 </body>
 </html>
+ 
